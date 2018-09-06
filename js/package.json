@@ -1,0 +1,10 @@
+{
+  "name": "one-algorithm-js",
+  "version": "0.0.1",
+  "description": "one algorithm, one day",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "jerret <321jiangtao@gmail.com> (https://github.com/jiangtao)",
+  "license": "MIT"
+}
