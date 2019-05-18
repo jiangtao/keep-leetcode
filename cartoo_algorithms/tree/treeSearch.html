@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>树的遍历 以dom 节点为例</title>
+    <style>
+        .sub{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body class="body" data-index="0">
+    <div class="main" data-index="1">
+        <div class="sub" data-index="1">1-1</div>
+        <div class="sub" data-index="2">1-2</div>
+        <div class="sub" data-index="3">1-3</div>
+        <div class="sub" data-index="4">1-4</div>
+        <div class="sub" data-index="5">1-5</div>
+    </div>
+    <div class="main" data-index="2">
+        2
+        <div class="sub" data-index="1">2-1</div>
+        <div class="sub" data-index="2">2-2</div>
+        <div class="sub" data-index="3">2-3</div>
+        <div class="sub" data-index="4">2-4</div>
+        <div class="sub" data-index="5">2-5</div>
+    </div>
+</body>
+<script>
+var root = document.body 
+// 前序遍历
+function bfs (root){
+    let q = [], node
+    q.push(root)
+    while(node = q.shift()) {
+        console.log(node.className, node.getAttribute('data-index'), node.className === 'sub' && node.innerHTML)
+        q.push(...node.children)
+    }
+}
+
+function dfs(node) {
+    if(!node) return 
+    console.log(node.className, node.getAttribute('data-index'), node.className === 'sub' && node.innerHTML)
+    let nodes = [...node.children]
+    while(nodes.length) dfs(nodes.shift())
+}
+function print(node) {
+    console.log(node.className, node.getAttribute('data-index'), node.className === 'sub' && node.innerHTML)
+}
+bfs(root)
+console.log('')
+console.log(dfs(root))
+
+</script>
+
+</html>
