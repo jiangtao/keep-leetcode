@@ -1,19 +1,26 @@
-// 冒泡排序: 交换排序, 相邻元素对比交换, 左边的大于右边则交换
+// 快速排序
 function swap(A, i, j) {
   [A[i], A[j]] = [A[j], A[i]]
 }
-function bubbleSort(A) {
-  for(let i = 0; i < A.length - 1; i++) {
-    let sorted = true
-    for(let j = 0; j < A.length - i - 1; j++) {
-      if(A[j] > A[j + 1]) {
-        swap(A, j, j+1)
-        sorted = false
-      }
-    }
-    if(sorted) break
-  }
+function quickSort(A, start = 0, end = A.length - 1) {
+  if(start >= end) return
+  var pivot = partion(A, start, end)
+  quickSort(A, 0, pivot - 1)
+  quickSort(A, pivot + 1, end)
   return A
 }
+function partion(A, start, end) {
+  let pivot = A[start], mark = start
+  for(let i = start + 1; i <= end; i++) {
+    if(A[i] < pivot) {
+      mark++
+      console.log(mark)
+      swap(A, mark, i)
+    }
+  }
+  A[start] = A[mark]
+  A[mark] = pivot
+  return mark
+}
 
-console.log(bubbleSort([1,2,5, 0, -1,3,10, 11, 13,15, 20]))
+console.log(quickSort([3,5,10,5,1,16]))
