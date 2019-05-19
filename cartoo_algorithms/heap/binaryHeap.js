@@ -1,11 +1,12 @@
 // 把树的运行时序图画出来, 就比较好理解
+
 /**
  * 用于插入节点的时候 上浮
  */
-function upAdjust(heap) {
+function upMaxAdjust(heap) {
   let childIndex = heap.length - 1;
   let parentIndex = parseInt((childIndex - 1) / 2);
-  while (childIndex >= 0 && heap[childIndex] < heap[parentIndex]) {
+  while (childIndex > 0 && parentIndex >= 0 && heap[childIndex] > heap[parentIndex]) {
     swap(heap, parentIndex, childIndex);
     childIndex = parentIndex;
     parentIndex = parseInt((childIndex - 1) / 2);
@@ -83,3 +84,8 @@ function sortMax(heap) {
 // console.log(build([7,3,5,4,9,8,9]))
 console.log(sort([7, 3, 5, 4, 9, 8, 9]));
 console.log(sortMax([7, 3, 5, 4, 9, 8, 9]));
+
+exports.buildMaxHeap = buildMaxHeap
+exports.upMaxAdjust = upMaxAdjust
+exports.downAdjustMaxHeap = downAdjustMaxHeap
+exports.swap = swap
