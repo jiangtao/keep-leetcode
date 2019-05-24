@@ -177,3 +177,14 @@ rotate([6, 7, 8, 1, 2, 3, 4]); // [4,3,2,1,8,7,6]
 ```
 
 [js answer](./js/rotate.js)
+
+---- 
+### 12. 2019-05-24
+
+有一个单向链表 L, 判定 L 中有环 
+
+```javascript
+hasCircle(L); // true
+```
+
+[js answer](./js/hasCircle.js)
