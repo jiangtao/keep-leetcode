@@ -1,5 +1,7 @@
 one algorithm, one day (一天刷一题，防老防痴呆)
 
+从 19 年 5 月 27 日起, 将进行系列问题学习. 每周题目来自 leetcode, 每周围绕一个话题来, 学会分析一类问题. (周六/日, 节假日不出题, 用来回顾和学习之用)
+
 如果觉得有用，请 star，欢迎 fork 或在 issue 中交流。有找工作和招聘需求的技术可以来[内推群](https://github.com/neitui/jobs)
 
 ---
@@ -189,7 +191,11 @@ hasCircle(L); // true
 
 [js answer](./js/hasCircle.js)
 
-### 13. 2019-05-27
+### 2019年 5 月 27 日-2019 年 5 月31 日 (Top K)
+
+本周题目围绕 `Top K` 问题, 目的掌握 `Top K`相关的问题.
+
+#### 13. 2019-05-27
 
 给定一个长度为 L的数组 A, A 里面都是数字, 求前 K 个最大数. [issue](https://github.com/jiangtao/one-algorithm/issues/1)
 
