@@ -191,7 +191,7 @@ hasCircle(L); // true
 
 ### 13. 2019-05-27
 
-给定一个长度为 L的数组 A, A 里面都是数字, 求前 K 个最大数. [issue](./issues/1)
+给定一个长度为 L的数组 A, A 里面都是数字, 求前 K 个最大数. [issue](https://github.com/jiangtao/one-algorithm/issues/1)
 
 ```javascript
 findMaxNumbers(A, K); // [5,6,8,10,1,2,3,4] 3 结果为 [10, 8, 6]
