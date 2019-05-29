@@ -209,7 +209,7 @@ findMaxNumbers(A, K); // [5,6,8,10,1,2,3,4] 3 结果为 [10, 8, 6]
 
 实现一个 Min Stack, leetcode 题目[155. Min Stack](https://leetcode.com/problems/min-stack/) [issue](https://github.com/jiangtao/one-algorithm/issues/2)
 
-#### 14. 2019-05-29
+#### 15. 2019-05-29
 
 计算出爬楼的最小成本 leetcode 题目[746. Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) [issue](https://github.com/jiangtao/one-algorithm/issues/3)
 
