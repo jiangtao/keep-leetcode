@@ -217,5 +217,7 @@ findMaxNumbers(A, K); // [5,6,8,10,1,2,3,4] 3 结果为 [10, 8, 6]
 
 #### 16. 2019-05-30
 
+求一个由字符串构成的数组中, 出现最多的词
+
 [692. Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/) [issue](https://github.com/jiangtao/one-algorithm/issues/4)
 
