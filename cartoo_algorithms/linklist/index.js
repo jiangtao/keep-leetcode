@@ -49,11 +49,9 @@ class LinkList {
    * 3-2-1-4-5
    */
   reverse() {
-    if (!this.head.next || !this.head) return;
-    let p = this.head,
-      q = p.next,
+    let p = null,
+      q = this.head,
       r;
-    p.next = null;
     while (q) {
       r = q.next;
       q.next = p;
