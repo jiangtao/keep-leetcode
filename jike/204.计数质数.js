@@ -14,22 +14,24 @@
  * 12 = 4 * 3
  * 12 = 6 * 2
  * 因为每一次的数字都是由两个数相乘，且素数与素数之积，肯定不是素数
+ * 素数和非素数 和(0, 1)。 那么把1和0排除掉即可
  */
 var countPrimes = function(n) {
-  const isPrime = function(n) {
-    if (n === 2) return true
-    const max = Math.ceil(Math.sqrt(n))
-    for(let i = 2; i <= max; i++) {
-      if (!(n % i)) return false
-    }
-    return true
-  }
-  let count = 0
+  if (n < 2) return 0
+  let tables = new Array(n+1)
+  let count = n - 2
+  tables.fill(1)
   for(let i = 2; i < n; i++) {
-    if (isPrime(i)) count++
+    if(tables[i]) {
+      for(let j = i * 2; j < n; j += i) {
+        if (tables[j] === 1) {
+          tables[j] = 0
+          count--
+        }
+      }
+     }
   }
   return count
 };
-
 // @lc code=end
 
