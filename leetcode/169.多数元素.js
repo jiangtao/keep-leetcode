@@ -8,30 +8,17 @@
 /**
  * @param {number[]} nums
  * @return {number}
- * 212
- * 122
- * 1232
+ * 1 2 3 3 3
+ * 3 3 2 1 3
  */
-var majorityElement = function(nums, l, h) {
-  
-  function _findTimes(nums, num, l, h) {
-    let count = 0
-    for(let j = l; j <= h; j++) {
-      if (nums[j] === num) count++
-    }
-    return count
+var majorityElement = function(nums) {
+  // 假设众数是1，其他是-1，则有众数的话 和一定大于0
+  let count = 0,
+    candidate;
+  for (let n of nums) {
+    if (count === 0) candidate = n
+    count += candidate === n ? 1 : -1;
   }
-  function _countInRange (nums, l, h) {
-    if (l === h) return nums[l]
-    let mid = parseInt((h - l) / 2) + l 
-    let left = _countInRange(nums, l, mid)  
-    let right = _countInRange(nums, mid + 1, h)
-    // 如果左边，右边众数相等， 则任意一个众数就是他的值
-    if (left === right) return left
-    // 如果不相等， 就比较谁的多， 谁多谁就是目标数 
-    return _findTimes(nums, left, l, mid) > _findTimes(nums,right, mid+1, h) ? left : right
-  }
-  return _countInRange(nums, 0, nums.length - 1)
+  return count > 0 ? candidate : -1;
 };
 // @lc code=end
-
