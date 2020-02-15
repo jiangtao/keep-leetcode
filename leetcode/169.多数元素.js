@@ -13,6 +13,7 @@
  * 1232
  */
 var majorityElement = function(nums, l, h) {
+  
   function _findTimes(nums, num, l, h) {
     let count = 0
     for(let j = l; j <= h; j++) {
