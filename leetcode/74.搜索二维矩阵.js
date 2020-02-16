@@ -52,20 +52,31 @@
  * @return {boolean}
  */
 var searchMatrix = function(matrix, target) {
-  // 采用跟之前的方案一样
-  if (!matrix || matrix.length === 0) return false
-  let col = matrix.length - 1
-  let row = 0
-  while(col >= 0 && row < matrix[0].length) {
-    let t = matrix[col][row]
+  if (!matrix || matrix.length === 0 ) return false
+  // 此时的给出要求的二维矩阵， 相当于一个数组， 只不过数据的下标比较特殊
+  // idx = col * yL + row
+  // 按照二分查找的方法来处理
+  const yL = matrix.length
+  const xL = matrix[0].length
+  let l = 0, h = xL * yL - 1
+
+  while(l <= h) {
+    let mid = (l + h) >> 1
+    console.log(mid, parseInt(mid / xL), mid % xL)
+    let t = matrix[parseInt(mid / xL )][mid % xL]
     if (t === target) return true
-    if (t < target) {
-      row++
+    if (t > target) {
+      h = mid - 1
     } else {
-      col--
+      l = mid + 1
     }
   }
   return false
 };
+/**
+ * 1 2 
+ * l = 0 h = 1 mid = 0
+ * l = 1 h = 1 mid = 1
+ */
 // @lc code=end
 
