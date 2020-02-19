@@ -55,16 +55,19 @@
  * @param {number} L
  * @param {number} R
  * @return {number}
+ * 二分搜索树的特性， node.right.val > node.val > node.left.val
  */
 var rangeSumBST = function(root, L, R) {
-  // 不用递归模拟栈的存储
-  const q = [root]
-  let node, sum = 0
-  while(node = q.shift()) {
-    if (node.val >= L && node.val <= R) sum += node.val
-    node.left && q.push(node.left)
-    node.right && q.push(node.right)
+  let sum = 0
+  var dfs = function(root, L, R) {
+    if (!root) return
+    if (root.val >= L && root.val <= R) {
+      sum += root.val
+    }
+    if (root.val > L) dfs(root.left, L, R)
+    if (root.val < R) dfs(root.right, L, R)
   }
+  dfs(root, L, R)
   return sum
 };
 // @lc code=end
