@@ -59,15 +59,12 @@
  */
 var rangeSumBST = function(root, L, R) {
   let sum = 0
-  var dfs = function(root, L, R) {
+  !function _dfs (root) {
     if (!root) return
-    if (root.val >= L && root.val <= R) {
-      sum += root.val
-    }
-    if (root.val > L) dfs(root.left, L, R)
-    if (root.val < R) dfs(root.right, L, R)
-  }
-  dfs(root, L, R)
+    if (root.val >= L && root.val <= R) sum += root.val
+    if (root.val > L) _dfs(root.left)
+    if (root.val < R) _dfs(root.right)
+  }(root)
   return sum
 };
 // @lc code=end
