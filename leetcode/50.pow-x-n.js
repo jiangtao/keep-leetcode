@@ -56,13 +56,17 @@
 var myPow = function(x, n) {
   // n 是 偶数的情况， n < 0
   function _myPow(x, n, c = {}) {
-    if (n === 1) return x
-    if (c[n]) return c[n]
-    if (n & 1) {
-      return c[n] = x * _myPow(x, n - 1, c)
-    } else {
-      return c[n] = _myPow(x * x, n / 2, c)
+    let sum = 1
+    while(n > 1) {
+      if (n & 1) { 
+        sum *= x 
+        n--
+      } else {
+        n /= 2
+        x = x * x
+      }
     }
+    return x * sum
   } 
   if (n === 0) return 1
   else if (n < 0) return 1 / _myPow(x, -n, {})
