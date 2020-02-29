@@ -55,22 +55,19 @@
  */
 var myPow = function(x, n) {
   // n 是 偶数的情况， n < 0
-  function _myPow(x, n, c = {}) {
+  function _myPow(x, n) {
     let sum = 1
-    while(n > 1) {
-      if (n & 1) { 
-        sum *= x 
-        n--
-      } else {
-        n /= 2
-        x = x * x
+    for(let k = n; k >= 1; k /= 2) {
+      if (k & 1 > 0) {
+        sum *= x
       }
+      x = x * x
     }
-    return x * sum
+    return sum
   } 
   if (n === 0) return 1
-  else if (n < 0) return 1 / _myPow(x, -n, {})
-  else return _myPow(x, n, {})
+  else if (n < 0) return 1 / _myPow(x, -n)
+  else return _myPow(x, n)
 };
 // @lc code=end
 
