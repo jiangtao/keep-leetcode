@@ -17,29 +17,15 @@
  * @return {ListNode}
  * @examples 1->2->3->4->NULL
  */
-// var reverseList = function(head) {
-//   let prev = null, target = head, t
-//   while(target) {
-//     t = target.next
-//     target.next = prev
-//     prev = target
-//     target = t
-//   }
-//   return prev
-// };
-var reverseList = function(head, prev = null) {
-  // let prev = null, target = head, t
-  // while(target) {
-  //   t = target.next
-  //   target.next = prev
-  //   prev = target
-  //   target = t
-  // }
-  // return prev
-  if (!head) return prev
-  let t = head.next
-  head.next = prev
-  return reverseList(t, head)
+var reverseList = function(head) {
+  let pre = null, target = head, next
+  while(target) {
+    next = target.next
+    target.next = pre
+    pre = target
+    target = next
+  }
+  return pre
 };
 // @lc code=end
 
