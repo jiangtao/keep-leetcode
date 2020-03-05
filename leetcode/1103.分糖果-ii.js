@@ -69,15 +69,7 @@
  * @return {number[]}
  */
 var distributeCandies = function(candies, num_people) {
-  let i = 0, ans = new Array(num_people)
-  ans.fill(0)
-  while(candies > 0) {
-    let count = Math.min(i+1, candies)
-    ans[i % num_people] += count
-    candies -= count
-    i++
-  }
-  return ans
+
 };
 // @lc code=end
 
