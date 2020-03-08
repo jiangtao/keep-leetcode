@@ -44,15 +44,15 @@
  * 2. DP
  */
 var maxProfit = function(prices) {
-  let buy = 0
-  for(let i = 0; i < prices.length; i++) {
-    for(let j = i + 1; j < prices.length; j++) {
-      if (prices[j] > prices[i]) {
-        buy = Math.max(buy, prices[j] - prices[i])
-      }
-    }
+  if (prices.length === 0) return 0
+  let i = 1
+  dp_i_0 = 0
+  dp_i_1 = -prices[0]
+  for(; i < prices.length; i++) {
+    dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i])
+    dp_i_1 = Math.max(-prices[i], dp_i_1)
   }
-  return buy
+  return dp_i_0
 };
 // @lc code=end
 
