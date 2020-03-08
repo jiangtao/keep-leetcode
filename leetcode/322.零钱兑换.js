@@ -39,20 +39,15 @@
  * @return {number}
  */
 var coinChange = function(coins, amount) {
-  let m = {}
-  const coinCount = function (n) {
-    if (n in m) return m[n]
-    if (n === 0) return 0
-    if (n < 0) return -1
-    let res = amount + 1
-    for(let coin of coins) {
-      let sub = coinCount(n-coin)
-      if (sub === -1) continue
-      res = Math.min(res, 1 + sub)
-    }
-    m[n] = (res === amount + 1 ? -1 : res)
-    return m[n]
+  let dp = new Array(amount + 1)
+  dp.fill(amount + 1)
+  dp[0] = 0
+  for(let i = 1; i <= amount; i++) {
+    for(let c of coins) {
+      if (i - c < 0) continue
+      dp[i] = Math.min(dp[i], 1 + dp[i - c])
+    }  
   }
-  return coinCount(amount)
+  return dp[amount] === amount + 1 ? - 1 : dp[amount]
 };
 // @lc code=end
