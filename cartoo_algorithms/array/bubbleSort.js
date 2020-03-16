@@ -1,19 +1,24 @@
-// 冒泡排序: 交换排序, 相邻元素对比交换, 左边的大于右边则交换
 function swap(A, i, j) {
-  [A[i], A[j]] = [A[j], A[i]]
+  let t = A[i]
+  A[i] = A[j]
+  A[j] = t
 }
 function bubbleSort(A) {
-  for(let i = 0; i < A.length - 1; i++) {
+  const len = A.length
+  for(let i = 0; i < len; i++) {
+    // 假定无序区已排序完， 若本次无序区已排序完，则代表排序已经完成，则退出比较
     let sorted = true
-    for(let j = 0; j < A.length - i - 1; j++) {
-      if(A[j] > A[j + 1]) {
-        swap(A, j, j+1)
+    for(let j = 0; j < len - i - 1;j++) {
+      if (A[j] > A[j+1]) {
+        swap(A, j, j + 1)
         sorted = false
       }
+      count++
+
     }
-    if(sorted) break
+    if (sorted) break
   }
   return A
 }
 
-console.log(bubbleSort([1,2,5, 0, -1,3,10, 11, 13,15, 20]))
+console.log(bubbleSort([ 10, 9, 8, 7, 6, 5]))
