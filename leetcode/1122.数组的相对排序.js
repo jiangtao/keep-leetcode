@@ -48,29 +48,26 @@
 /**
  * @param {number[]} arr1
  * @param {number[]} arr2
- * 解法: 把代码翻译一遍, 用 sort 来实现
+ * 解法: 计数排序, 把长的次数记录下来, 用短的来循环, 然后剩下的就是短没有 长里面有的
  * @return {number[]}
  */
 var relativeSortArray = function(arr1, arr2) {
-  let map = arr2.reduce((l, p, index) => {
-    l[p] = index
-    return l
-  }, {})
-  // sort的  a - b的大小是 排序后
-  return arr1.sort((a, b) => {
-    const ia = map[a]
-    const ib = map[b]
-    if (ia === undefined && ib === undefined) {
-      return a - b
-      // ia 在前, 没有, 按照升序排列
-    } else if(ia === undefined) {
-      return 1
-    } else if (ib === undefined) {
-      return -1
-    } else {
-      return ia - ib
+  let L = new Array(1001)
+  arr1.forEach(x => L[x] ? L[x]++ : (L[x] = 1))
+  let left = []
+  arr2.forEach(x => {
+    while(L[x]) {
+      left.push(x)
+      L[x]--
     }
   })
+  for(let x = 0; x < L.length; x++) {
+    while(L[x]) {
+      left.push(x)
+      L[x]--
+    }
+  }
+  return left
 };
 // @lc code=end
 
