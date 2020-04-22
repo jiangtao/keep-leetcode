@@ -52,18 +52,21 @@
  * @return {number[]}
  */
 var relativeSortArray = function(arr1, arr2) {
-  let L = new Array(1001)
-  arr1.forEach(x => L[x] ? L[x]++ : (L[x] = 1))
+  let min = Math.min.apply(null, arr1)
+  let max = Math.max.apply(null, arr1)
+  let d = max - min + 1
+  let L = new Array(d)
+  arr1.forEach(x => L[x-min] ? L[x-min]++ : (L[x-min] = 1))
   let left = []
   arr2.forEach(x => {
-    while(L[x]) {
+    while(L[x-min]) {
       left.push(x)
-      L[x]--
+      L[x-min]--
     }
   })
   for(let x = 0; x < L.length; x++) {
     while(L[x]) {
-      left.push(x)
+      left.push(x+min)
       L[x]--
     }
   }
