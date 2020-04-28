@@ -20,4 +20,21 @@ function coutSort(A) {
   return R
 }
 
-console.log(coutSort([1,2,12, 3,4,10,5,12,0]))
+console.log(coutSort2([1,2,12, 3,4,10,5,12,0]))
+
+
+function coutSort2 (A) {
+  const max = Math.max.apply(null, A)
+  const min = Math.min.apply(null, A)
+  const len = max - min + 1
+  const L = new Array(len)
+  let R = []
+  A.map(x => L[x-min] ? L[x-min]++ : (L[x-min] = 1))
+  for(let i = 0; i < L.length; i++) {
+    while(L[i]) {
+      R.push(i+min)
+      L[i]--
+    }
+  }
+  return R
+}

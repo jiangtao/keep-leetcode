@@ -16,3 +16,6 @@ function bucketSort (A, bucketLen = A.length) {
 }
 
 console.log(bucketSort([1,2,5,19, 20, 9, 1, -1]))
+
+
+// 平均数

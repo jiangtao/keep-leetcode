@@ -25,6 +25,7 @@ function partition (A, left, right) {
     }
   }
   swap(A, pivotIndex, left)
+  console.log(pivot, A)
   return left
 }
 function quickSort (A, left = 0, right = A.length - 1) {
@@ -56,4 +57,51 @@ function quickSort2(A) {
   return quickSort2(left).concat(pivotValue, quickSort2(right))
  }
 // console.log(quickSort2([3,5,10,5,1,16]))
-console.log(quickSort([3,5,10,5,1,16]))
+// console.log(quickSort([3,5,10,5,1,16]))
+
+// 快排: 取一个中间为小于它的左边。小于大于它的放在右边。然后，以此来不断的进行拆分，最后组成一个排序好的数组。
+function qs(A) {
+  if (A.length < 2) return A
+  let pivotIndex = A.length >> 1
+  let pivot = A.splice(pivotIndex, 1)[0]
+  let left = [], right = []
+  for(let i = 0; i < A.length; i++) {
+    (A[i] > pivot ? right : left).push(A[i])
+  }
+  return qs(left).concat(pivot).concat(qs(right))
+}
+
+// console.log(qs([3,5,10,5,1,16]))
+
+
+function qs2(A) {
+  function _partition(A, left, right) {
+    let p = left
+    let pV = A[p]
+    while(left !== right) {
+      while(left < right && A[right] > pV) {
+        right--
+      }
+
+      while(left < right && A[left] <= pV) {
+        left++
+      }
+      if (left < right) {
+        swap(A, left, right)
+      }
+    }
+    swap(A,p,left)
+    console.log(left, A)
+    return left
+  }
+  function _qs (A, left = 0, right = A.length - 1) {
+    if (left < right) {
+      let pivotIndex = _partition(A, left, right)
+      _qs(A, left, pivotIndex - 1)
+      _qs(A, pivotIndex + 1, right)
+    } 
+  }
+  _qs(A)
+  return A
+}
+qs2([16, 3,5,10,5,1])

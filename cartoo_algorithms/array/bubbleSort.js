@@ -21,4 +21,19 @@ function bubbleSort(A) {
   return A
 }
 
-console.log(bubbleSort([ 10, 9, 8, 7, 6, 5]))
+console.log(bubbleSort2([ 10, 9, 8, 7, 6, 5]))
+
+
+function bubbleSort2(A) {
+  for(let i = 0; i < A.length; i++) {
+    let sorted = true
+    for(let j = 0; j < A.length - i - 1; j++) {
+      if (A[j] > A[j+1]) {
+        swap(A, j, j+1)
+        sorted = false
+      }
+    }
+    if (sorted) break
+  }
+  return A
+}
