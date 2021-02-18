@@ -43,7 +43,6 @@ var spiralOrder = function(matrix) {
       }
   }
   while(result.length < m * n) {
-      console.log(direct, result)
       walk[direct]()
   }
   return result
